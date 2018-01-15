@@ -1,9 +1,11 @@
 # CS362-004-W2018
 Austin Sanders
-<<<<<<< HEAD
+
 
 1.13.17
 
+
+This is my assignment one submission! : * )
 
 =======
 1.13.17
