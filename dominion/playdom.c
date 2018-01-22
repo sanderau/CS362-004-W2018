@@ -4,14 +4,18 @@
 #include <stdlib.h>
 
 int main (int argc, char** argv) {
+  if(argc != 2 )
+  {
+    printf("Error: %s [integer]\n", argv[0]);
+    exit(1);
+  }
   struct gameState G;
   int k[10] = {adventurer, gardens, embargo, village, minion, mine, cutpurse,
            sea_hag, tribute, smithy};
-
   printf ("Starting game.\n");
-
+  
   initializeGame(2, k, atoi(argv[1]), &G);
-
+  
   int money = 0;
   int smithyPos = -1;
   int adventurerPos = -1;
