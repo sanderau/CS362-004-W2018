@@ -22,6 +22,22 @@ unittest3: dominion.o unittest1.c
 unittest4: dominion.o unittest4.c
 	gcc -o unittest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
 
+runTests:
+	Make unittest1
+	Make unittest2
+	Make unittest3
+	Make unittest4
+	
+	echo "unittest1.c" >> unitestresults.out
+	./unittest1 >> unittestresults.out
+	echo "unittest2.c" >> unitestresults.out
+	./unittest2 >> unittestresults.out
+	echo "unittest3.c" >> unitestresults.out
+	./unittest3 >> unittestresults.out
+	echo "unittest3.c" >> unitestresults.out
+	./unittest3 >> unittestresults.out
+	
+
 testDrawCard: testDrawCard.c dominion.o rngs.o
 	gcc  -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
