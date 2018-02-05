@@ -1,4 +1,4 @@
-CFLAGS = -Wall -fpic -lm #-coverage
+CFLAGS = -Wall -fpic -lm -coverage
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -30,12 +30,16 @@ runTests:
 	
 	echo "unittest1.c" >> unitestresults.out
 	./unittest1 >> unittestresults.out
+	gcov unittest1.c >> unittestresult.out
 	echo "unittest2.c" >> unitestresults.out
 	./unittest2 >> unittestresults.out
+	gcov unittest2.c >> unittestresult.out
 	echo "unittest3.c" >> unitestresults.out
 	./unittest3 >> unittestresults.out
-	echo "unittest3.c" >> unitestresults.out
-	./unittest3 >> unittestresults.out
+	gcov unittest3.c >> unittestresult.out
+	echo "unittest4.c" >> unitestresults.out
+	./unittest4 >> unittestresults.out
+	gcov unittest4.c >> unittestresult.out
 	
 
 testDrawCard: testDrawCard.c dominion.o rngs.o
