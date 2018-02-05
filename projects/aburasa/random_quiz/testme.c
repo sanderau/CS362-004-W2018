@@ -6,13 +6,28 @@
 char inputChar()
 {
     // TODO: rewrite this function
-    return ' ';
+   	char c = rand()%96;
+	c += 32;
+   return c; // return a random valid ascii value
 }
 
 char *inputString()
 {
+	int i;
+	char *s;
     // TODO: rewrite this function
-    return "";
+    int size = 6;
+	s = (char *) malloc(sizeof(char) * size);    
+    
+    for(i = 0; i < size-1; i++)
+    {
+	char c = random()%25;
+	c += 97;
+	s[i] = c;
+    }
+
+    s[5] = '\0';
+	return s;
 }
 
 void testme()
@@ -45,6 +60,7 @@ void testme()
       printf("error ");
       exit(200);
     }
+    free(s);
   }
 }
 
