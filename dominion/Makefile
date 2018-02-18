@@ -1,4 +1,4 @@
-CFLAGS = -Wall -fpic -coverage -lm
+CFLAGS = -Wall -fpic -lm -coverage
 
 rngs.o: rngs.h rngs.c
 	gcc -c rngs.c -g  $(CFLAGS)
@@ -9,6 +9,39 @@ dominion.o: dominion.h dominion.c rngs.o
 playdom: dominion.o playdom.c
 	gcc -o playdom playdom.c -g dominion.o rngs.o $(CFLAGS)
 #To run playdom you need to entere: ./playdom <any integer number> like ./playdom 10*/
+
+unittest1: dominion.o unittest1.c
+	gcc -o unittest1 unittest1.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest2: dominion.o unittest2.c
+	gcc -o unittest2 unittest2.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest3: dominion.o unittest1.c
+	gcc -o unittest3 unittest3.c -g dominion.o rngs.o $(CFLAGS)
+
+unittest4: dominion.o unittest4.c
+	gcc -o unittest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
+
+runTests:
+	Make unittest1
+	Make unittest2
+	Make unittest3
+	Make unittest4
+	
+	echo "unittest1.c" >> unitestresults.out
+	./unittest1 >> unittestresults.out
+	gcov unittest1.c >> unittestresult.out
+	echo "unittest2.c" >> unitestresults.out
+	./unittest2 >> unittestresults.out
+	gcov unittest2.c >> unittestresult.out
+	echo "unittest3.c" >> unitestresults.out
+	./unittest3 >> unittestresults.out
+	gcov unittest3.c >> unittestresult.out
+	echo "unittest4.c" >> unitestresults.out
+	./unittest4 >> unittestresults.out
+	gcov unittest4.c >> unittestresult.out
+	
+
 testDrawCard: testDrawCard.c dominion.o rngs.o
 	gcc  -o testDrawCard -g  testDrawCard.c dominion.o rngs.o $(CFLAGS)
 
