@@ -2,13 +2,15 @@
  * Author: Austin Sanders
  * File: randomtestadventurer.c
  * Date: 2.17.18
- * Description: Random test one for the adventurer card
+ * Description: Random test one for the adventurer card. This function will randomly place two
+ ** treasure cards in a full deck of cards other than treasure. It makes sure the proper amount
+ ** of cards are pulled
  * Input: none
  * Output: random tests trying to break the function, and testing code coverage.
  * Warnings: none
 *******************************************************************************/
 
-#define loud 0 // display all values
+#define loud 1 // display all values
 #define indefinite 0 // run the random testing indefinetly
 #define definite 10000 // if you dont want to run it indefinitely, run it this many times
 
@@ -41,6 +43,7 @@ int main(int argc, char *argv[])
 	if(initializeGame(players, k, seed, &G) == -1)
 	{
 		fprintf(stderr, "Could not initialize the game!\n");
+		exit(1);
 	}
 
 	if(indefinite)
