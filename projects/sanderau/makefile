@@ -13,10 +13,10 @@ playdom: dominion.o playdom.c
 ###########################TESTING###########################################
 
 testAdv: dominion.o randomtestadventurer.c
-	gcc -o randTestAdv randomtestadventurer.c -g dominion.o rngs.o $(CFLAGS)
+	gcc -o adv randomtestadventurer.c -g dominion.o rngs.o $(CFLAGS)
 
 runtests:
-	./randTestAdv
+	./adv
 	echo "------------Random Test Adventurer results--------------------\n\n\n" > coverageResults.txt 
 	gcov randomtestadventurer.c >> coverageResults.txt 
 	cat randomtestadventurer.c.gcov >> coverageResults.txt
@@ -27,4 +27,4 @@ runtests:
 all: playdom
 
 clean:
-	rm -f randTestAdv *.o playdom.exe playdom player player.exe  *.txt *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f adv *.o playdom.exe playdom player player.exe  *.txt *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe

@@ -1283,7 +1283,7 @@ int getCost(int cardNumber)
 {
 	//+3 Cards
 	int i;
-      	for (i; i < 3; i++)//iterator is not zeroed out
+      	for (i = 0; i < 3; i++)//iterator is not zeroed out
 	{
 		drawCard(currentPlayer, state);
 	}
@@ -1295,6 +1295,7 @@ int getCost(int cardNumber)
 
 void adventurerCard(struct gameState *state, int currentPlayer)
 {
+
 	int temphand[MAX_HAND];// moved above the if statement
 	int drawntreasure=0;
 	int cardDrawn;
@@ -1302,7 +1303,7 @@ void adventurerCard(struct gameState *state, int currentPlayer)
 
 	while(drawntreasure<2)
 	{
-		if (state->deckCount[currentPlayer] <1)\
+		if (state->deckCount[currentPlayer] <1)
 		{
 			//if the deck is empty we need to shuffle discard and add to deck
 			shuffle(currentPlayer, state);
@@ -1310,10 +1311,13 @@ void adventurerCard(struct gameState *state, int currentPlayer)
 	
 		drawCard(currentPlayer, state);
 		cardDrawn = state->hand[currentPlayer][state->handCount[currentPlayer]-1];//top card of hand is most recently drawn card.
-	
+
+
 		if (cardDrawn == copper || cardDrawn == silver || cardDrawn == gold)
+		{
 			drawntreasure++;
-	
+		}
+
 		else
 		{
 			temphand[z]=cardDrawn;
@@ -1328,6 +1332,8 @@ void adventurerCard(struct gameState *state, int currentPlayer)
 		state->discard[currentPlayer][state->discardCount[currentPlayer]++]=temphand[z-1]; // discard all cards in play that have been drawn
 		z=z-1;
 	}
+	
+
 }
 
 void council_room_card(struct gameState *state, int currentPlayer, int handPos)
