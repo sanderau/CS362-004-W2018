@@ -17,10 +17,13 @@ testAdv: dominion.o randomtestadventurer.c
 
 village: dominion.o randomtestcard1.c
 	gcc -o village randomtestcard1.c -g dominion.o rngs.o $(CFLAGS)
+great: dominion.o randomtestcard2.c
+	gcc -o great randomtestcard2.c -g dominion.o rngs.o $(CFLAGS)
 
 compiletests:
 	make testAdv
 	make village
+	make great
 
 runtests:
 	make compiletests
@@ -32,6 +35,10 @@ runtests:
 	echo "\n\n\n--------------------------Random test card one-----------------------\n\n\n" >> coverageResults.txt
 	gcov randomtestcard1.c >> coverageResults.txt
 	cat randomtestcard1.c.gcov >> coverageResults.txt
+	echo "\n\n\n---------------------------Random test card two------------------------\n\n\n" >> coverageResults.txt
+	./great
+	gcov randomtestcard2.c >> coverageResults.txt
+	cat randomtestcard2.c.gcov >> coverageResults.txt
 	
 
 ########################END TESTING##########################################
@@ -40,4 +47,4 @@ runtests:
 all: playdom
 
 clean:
-	rm -f adv village *.o playdom.exe playdom player player.exe  *.txt *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f adv village great *.o playdom.exe playdom player player.exe  *.txt *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
