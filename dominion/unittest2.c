@@ -17,7 +17,6 @@ int main(void)
 	struct gameState G;
 
 	initializeGame(players, k, seed, &G);
-	printf("%d\n", MAX_PLAYERS);
 
 	for(i = 0; i < 2000; i++)
 	{

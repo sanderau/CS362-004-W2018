@@ -23,23 +23,23 @@ unittest4: dominion.o unittest4.c
 	gcc -o unittest4 unittest4.c -g dominion.o rngs.o $(CFLAGS)
 
 runTests:
-	Make unittest1
-	Make unittest2
-	Make unittest3
-	Make unittest4
+	make unittest1
+	make unittest2
+	make unittest3
+	make unittest4
 	
 	echo "unittest1.c" >> unitestresults.out
-	./unittest1 >> unittestresults.out
-	gcov unittest1.c >> unittestresult.out
-	echo "unittest2.c" >> unitestresults.out
+	./unittest1 > unittestresults.out
+	gcov unittest1.c > unittestresults.out
+	echo "unittest2.c" > unitestresults.out
 	./unittest2 >> unittestresults.out
-	gcov unittest2.c >> unittestresult.out
-	echo "unittest3.c" >> unitestresults.out
+	gcov unittest2.c > unittestresults.out
+	echo "unittest3.c" > unitestresults.out
 	./unittest3 >> unittestresults.out
-	gcov unittest3.c >> unittestresult.out
-	echo "unittest4.c" >> unitestresults.out
-	./unittest4 >> unittestresults.out
-	gcov unittest4.c >> unittestresult.out
+	gcov unittest3.c > unittestresults.out
+	echo "unittest4.c" > unitestresults.out
+	./unittest4 > unittestresults.out
+	gcov unittest4.c > unittestresults.out
 	
 
 testDrawCard: testDrawCard.c dominion.o rngs.o
@@ -69,4 +69,4 @@ player: player.c interface.o
 all: playdom player testDrawCard testBuyCard badTestDrawCard
 
 clean:
-	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe
+	rm -f *.o playdom.exe playdom player player.exe  *.gcov *.gcda *.gcno *.so *.out testDrawCard testDrawCard.exe unittest1 unittest2 unittest3 unittest3
