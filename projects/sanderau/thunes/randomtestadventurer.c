@@ -73,6 +73,7 @@ int main(int argc, char *argv[])
 
 void runTest(struct gameState G, int p, int iteration)
 {
+	p = G.whoseTurn;
 	int posOne = rand()%(MAX_DECK), posTwo;
 	do{
 		posTwo = rand()%(MAX_DECK);
@@ -109,7 +110,7 @@ void runTest(struct gameState G, int p, int iteration)
 	G.deck[p][i] = -1; // singal end of deck
 
 
-	adventurerCard(&G, p);
+	cardeffect_adventurer(adventurer, 0, 0, 0, &G, 0, NULL);
 
 	if(loud)
 	{

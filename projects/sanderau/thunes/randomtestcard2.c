@@ -66,6 +66,7 @@ int main(int argc, char *argv[])
 //implement helper functions
 void runTest(int player, struct gameState G, int iterator)
 {
+	player = G.whoseTurn;
 	int newActions = rand()%10000+1; // generate a new random number of actions
 	G.numActions = newActions;
 	newActions++;
@@ -88,7 +89,7 @@ void runTest(int player, struct gameState G, int iterator)
 	G.hand[player][villagePos] = village;
 	G.handCount[player] = 5; // set hand count to five
 
-	great_hall_card(player, &G, villagePos);
+	cardeffect_great_hall(great_hall, 0, 0, 0, &G, 0, NULL);
 	if(loud)
 	{
 		printf("ITERATION: %d\n", iterator);
